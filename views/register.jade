@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  .row
+    .col-sm-6(style='margin-left: auto;margin-right: auto;')
+      h1 Register 
+      br
+      form(method='post' action='/users/register')
+        div.form-group
+          label(for='username') Username: 
+          .input-group
+            input#username.form-control(type='text' name='username')
+        div.form-group
+          label(for='password') Password: 
+          .input-group
+            input#password.form-control(type='password' name='password' data-toggle='password')
+            .input-group-append.password-hover
+              span.input-group-text
+                i.fa.fa-eye-slash
+        div.form-group
+          label(for='password2') Repeat password: 
+          .input-group
+            input#password2.form-control(type='password' name='password2' data-toggle='password2')
+            .input-group-append.password-hover
+              span.input-group-text
+                i.fa.fa-eye-slash
+        | !{message}
+        p(style='text-align: center;')
+          input.btn.btn-primary(type='submit' value='Register')
+

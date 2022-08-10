@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  .row
+    .col-sm-10
+      h1 Create a task
+    .col-sm-2
+      a(href='/tasks')
+        button.btn.btn-secondary(type='button' style='width: 100%; height: 100%;') Back
+  br
+  form(method='post' action='/tasks/create')
+      p
+        label(for='description') Description: 
+        input#description.form-control(type='text' name='description')
+      p
+        label(for='summary') Summary: 
+        textarea#summary.form-control( name='summary')
+      p
+        label(for='status') Status: 
+        select#status.form-control(aria-label='Select a task status' name='status')
+          option(value='Pending' selected='') Pending
+          option(value='In-Progress') In-Progress
+          option(value='Complete') Complete
+      | !{message}
+      p(style='text-align: center')
+        input.btn.btn-primary(type='submit' value='Save' style='min-width: 100px;')
+
+
+

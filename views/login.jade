@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  .row
+    .col-sm-6(style='margin-left: auto;margin-right: auto;')
+      h1(style='text-align: center;') Login
+      br
+      form(method='post' action='/login')
+        div.form-group
+          label(for='username') Username: 
+          .input-group
+            input#username.form-control(type='text' name='username')
+        div.form-group
+          label(for='password') Password: 
+          .input-group
+            input#password.form-control(type='password' name='password' data-toggle='password')
+            .input-group-append.password-hover
+              span.input-group-text
+                i.fa.fa-eye-slash
+        | !{message}
+        p(style='text-align: center;')
+          input.btn.btn-primary(type='submit' value='Login' style='min-width: 200px;')
+      p(style='text-align: center;')
+        a(href='/users/register')
+          button.btn.btn-secondary(type='button' style='min-width: 200px;') Register a new user
+

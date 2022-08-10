@@ -1,0 +1,32 @@
+extends layout
+
+mixin option
+  option(selected= (attributes.value == task.status))&attributes(attributes)
+    if block
+      block
+
+block content
+  .row
+    .col-sm-10
+      h1 Edit a task
+    .col-sm-2
+      a(href='/tasks')
+        button.btn.btn-secondary(type='button' style='width: 100%; height: 100%;') Back
+  br
+  form(method='post' action='/tasks/'+task.id+'/edit')
+      p
+        label(for='description') Description: 
+        input#description.form-control(type='text' name='description' value='#{task.task}')
+      p
+        label(for='summary') Summary: 
+        textarea#summary.form-control( name='summary') #{task.summary}
+      p
+        label(for='status') Status: 
+        select#status.form-control(aria-label='Select a task status' name='status')
+          +option(value='Pending') Pending
+          +option(value='In-Progress') In-Progress
+          +option(value='Complete') Complete
+      | !{message}
+      p(style='text-align: center;')
+        input.btn.btn-primary(type='submit' value='Save' style='min-width: 100px;')
+        
